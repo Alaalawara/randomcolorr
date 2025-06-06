@@ -137,7 +137,7 @@ const Page = ({ pinnedColor }) => {
         sx={{
           position: 'sticky',
           top: 0,
-          borderBottomWidth: '1px',
+          borderBottomWidth: '3px',
           borderBottomStyle: 'solid',
           borderBottomColor: 'currentColor',
           display: 'grid',

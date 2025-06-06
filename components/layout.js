@@ -2,11 +2,8 @@
 /** @jsx jsx */
 import { Global } from "@emotion/react";
 import { ThemeProvider, jsx } from "theme-ui";
-import { Sliders } from 'react-feather'
 import Head from "next/head";
 import { useRouter } from "next/router";
-import Link from "next/link";
-
 import theme from "../theme";
 
 
@@ -19,15 +16,12 @@ export default ({ children, colorPair = [] }) => {
   <ThemeProvider theme={theme}>
     <div>
       <Head>
-        <title>Randoma11y - Accessible color combinations</title>
+        <title>Randomcolorr - Generate color combinations</title>
         <meta
           name="viewport"
           content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
         />
-        <link
-          rel="shortcut icon"
-          href="https://components-ai.s3.amazonaws.com/og/randoma11y-avatar.jpg"
-        />
+        <link rel="icon" href="/favicon.ico" />
         <meta
           property="description"
           content="Get random, accessible color combinations"
@@ -46,7 +40,7 @@ export default ({ children, colorPair = [] }) => {
         <meta property="twitter:image" content="https://components-ai.s3.amazonaws.com/og/randoma11y.jpg"/>
         <meta property="og:image:width" content="1200"/>
         <meta property="og:image:height" content="630"/>
-
+    
       </Head>
       <Global
         styles={{
@@ -78,7 +72,7 @@ export default ({ children, colorPair = [] }) => {
       
       <footer
         sx={{
-          borderTop: "thin solid",
+          borderTop: "solid",
           color: "currentColor",
           borderTopColor: 'currentCOlor',
           textAlign: "center",
@@ -94,41 +88,33 @@ export default ({ children, colorPair = [] }) => {
             gap: '1em',
           }}
         >
-          © Copyright 2016-2024{" "}
           <a
-            sx={{ color: colorPair[0], fontWeight: "bold", textDecoration: 'none', }}
-            href="https://mrmrs.cc"
-            title=""
+            sx={{ color: colorPair[0], fontWeight: "bold", textDecoration: 'none',fontSize:"15px" }}
+            href="https://swarajdev.vercel.app/"
+            title="Dev Den"
           >
-           Adam Morse
+           Swaraj.dev
           </a>
           <a
-            sx={{ color: colorPair[0], fontWeight: "bold", textDecoration: 'none', }}
-            href="https://johno.com"
-            title=""
-          >
-            John Otander
-          </a>
-          <a
-            sx={{ color: colorPair[0], fontWeight: "bold", textDecoration: 'none', }}
-            href="https://components.ai/notes/computational-theming"
-            title="Computational Theming"
+            sx={{ color: colorPair[0], fontWeight: "bold", textDecoration: 'none', fontSize:"15px"}}
+            href="https://github.com/Alaalawara/Randomcolorr"
+            title="Design Den"
           >
             About
           </a>
           <a
-            sx={{ ml: 'auto', color: colorPair[0], fontWeight: "bold", textDecoration: 'none', }}
-            href="https://github.com/components-ai/randoma11y"
+            sx={{ ml: 'auto', color: colorPair[0], fontWeight: "bold", textDecoration: 'none', fontSize:"15px"}}
+            href="https://github.com/Alaalawara"
             title="GitHub"
           >
             GitHub
           </a>
           <a
-            sx={{ color: colorPair[0], fontWeight: "bold", textDecoration: 'none', }}
-            href="https://twitter.com/components_ai"
-            title="Twitter"
+            sx={{ color: colorPair[0], fontWeight: "bold", textDecoration: 'none', fontSize:"15px"}}
+            href="https://x.com/loops_infinity"
+            title="X"
           >
-            Twitter
+            X
           </a>
         </div>
       </footer>

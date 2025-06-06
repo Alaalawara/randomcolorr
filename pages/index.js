@@ -1,10 +1,10 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { IconButton, jsx } from 'theme-ui'
 import { useEffect, useState } from 'react'
-import  Link  from 'next/link'
+import Link from 'next/link'
 import contrast from 'get-contrast'
-import { Shuffle, Sliders, ArrowRightCircle, ArrowUpCircle, ArrowDownCircle } from 'react-feather'
+import { Shuffle, Sliders, Heart, ArrowRightCircle, ArrowUpCircle, ArrowDownCircle, RotateCcw, Eye, EyeOff, Anchor } from 'react-feather'
 
 import Layout from '../components/layout'
 import Button from '../components/button'
@@ -14,34 +14,18 @@ import { getColorPair } from '../lib'
 
 const Page = ({ pinnedColor }) => {
 
-    const [count, setCount] = useState(0);
+  const durableObjectName = 'Randomcolorr'; // Replace with the actual name of your Durable Object
 
-    const durableObjectName = 'RANDOMA11Y'; // Replace with the actual name of your Durable Object
-
-    const fetchCount = async () => {
-        try {
-            const response = await fetch(`https://ts-gen-count.adam-f8f.workers.dev/?name=${durableObjectName}`);
-            const data = await response.text();
-            setCount(data);
-        } catch (error) {
-            console.error('Error fetching count:', error);
-        }
-    };
-
-    const handleIncrement = async () => {
-        try {
-            await fetch(`https://ts-gen-count.adam-f8f.workers.dev/increment?name=${durableObjectName}`, {
-                method: 'POST',
-            });
-            fetchCount(); // Update count after increment
-        } catch (error) {
-            console.error('Error incrementing count:', error);
-        }
-    };
-
-    useEffect(() => {
-        fetchCount();
-    }, []);
+  const handleIncrement = async () => {
+    try {
+      await fetch(`https://ts-gen-count.adam-f8f.workers.dev/increment?name=${durableObjectName}`, {
+        method: 'POST',
+      });
+      fetchCount(); // Update count after increment
+    } catch (error) {
+      console.error('Error incrementing count:', error);
+    }
+  };
 
 
   const [colorPair, setColorPair] = useState([])
@@ -95,7 +79,7 @@ const Page = ({ pinnedColor }) => {
   const contrastRatio = contrast.ratio(colorA, colorB).toFixed(2)
   const contrastScore = contrast.score(colorA, colorB)
 
-  const ColorLink = ({color, ...props}) => {
+  const ColorLink = ({ color, ...props }) => {
     return (
       <Link href={{
         pathname: '/',
@@ -104,7 +88,7 @@ const Page = ({ pinnedColor }) => {
       >
         <a
           onClick={() => skiplink(color)}
-      title={'Find matches for '+color}
+          title={'Find matches for ' + color}
           sx={{
             display: 'block',
             textDecoration: 'none',
@@ -114,12 +98,12 @@ const Page = ({ pinnedColor }) => {
             height: ['12px', '12px', '12px'],
             aspectRatio: '1/1',
             cursor: 'pointer',
-                  //boxShadow: '0 0 0 2px '+colorB+', 0 0 0 3px '+colorB,
+            //boxShadow: '0 0 0 2px '+colorB+', 0 0 0 3px '+colorB,
             transition: 'all .2s ease',
-            ':hover': { filter: 'brightness(120%)'}
-                  //':active': {boxShadow: '0 0 0 2px '+colorB+', 0 0 0 3px '+color},
+            ':hover': { filter: 'brightness(120%)' }
+            //':active': {boxShadow: '0 0 0 2px '+colorB+', 0 0 0 3px '+color},
 
-        }} {...props} />
+          }} {...props} />
       </Link>
     )
   }
@@ -129,7 +113,7 @@ const Page = ({ pinnedColor }) => {
         sx={{
           position: 'sticky',
           top: 0,
-          borderBottomWidth: '1px',
+          borderBottomWidth: '3px',
           borderBottomStyle: 'solid',
           borderBottomColor: 'currentColor',
           display: 'grid',
@@ -153,54 +137,48 @@ const Page = ({ pinnedColor }) => {
           <span
             sx={{
               display: 'flex',
-              flexDirection: 'column',
+              flexDirection: 'row',
               justifyContent: 'center',
-              height: '24px',
-              width: '24px',
-              backgroundImage:
-                'linear-gradient(90deg, ' +
-                colorPair[0] +
-                ' 50%, transparent 50%, transparent 100%)',
-              boxShadow: '0 0 0 2px ' + colorPair[0],
-              borderRadius: '9999px',
+              height: '30px',
+              width: '30px'
             }}
-          ></span>
-          <span sx={{ fontSize: '12px', display: ['none', 'block', 'block'] }}>Randoma11y</span>
-        </h1>
-      <Link href={{
-        pathname: '/apca',
-        query: { color: colorPair[0] },
-      }} scroll={false}
-      >
-        <a
-          title='Switch algorithm'
-          sx={{
-            mx: 'auto',
-            my: 0,
-            textDecoration: 'none',
-            color: 'currentColor',
-            textAlign: 'center',
-            fontWeight: 500,
-            fontSize: [0, 1, 3],
-            fontFamily: 'monospace, monospace',
-            display: 'flex',
-            alignItems: 'center',
-            lineHeight: 1,
-            gap: '12px',
-            transition: 'all .2s ease',
-              cursor: 'pointer',
-            ':hover':{
-              filter: 'saturate(150%), contrast(125%)'
-            }
+          >
+            <EyeOff size={25} strokeWidth={3}/>
+            <Eye size={25} strokeWidth={3} sx={{rotate:"90deg"}}/>
 
-          }}
-        >
-          <span>{contrastRatio}{' '}</span>
-      <span sx={{ display: 'inline-flex', alignItems: 'center' }}>
-            <span sx={{ bg: colorA, color: colorB  , fontFamily: 'monospace', letterSpacing: '0.025em', px: 2, py: 1, lineHeight: 1, display: 'flex', alignItems: 'center', borderRadius: '9999px', opacity: .75, fontSize: 0, fontWeight: 400 }}>{contrastScore}</span>
           </span>
-        </a>
-      </Link>
+          <span sx={{ fontSize: '15px' }}>Randomcolorr</span>
+        </h1>
+        <Link href={{
+          pathname: '/apca',
+          query: { color: colorPair[0] },
+        }} scroll={false}
+        >
+          <a
+            title='Switch algorithm'
+            sx={{
+              mx: 'auto',
+              my: 0,
+              textDecoration: 'none',
+              color: 'currentColor',
+              textAlign: 'center',
+              fontWeight: 500,
+              fontSize: [0, 1, 3],
+              fontFamily: 'monospace, monospace',
+              display: 'flex',
+              alignItems: 'center',
+              lineHeight: 1,
+              gap: '12px',
+              transition: 'all .2s ease',
+              cursor: 'pointer',
+              ':hover': {
+                filter: 'saturate(150%), contrast(125%)'
+              }
+
+            }}
+          >
+          </a>
+        </Link>
         <div
           sx={{
             ml: 'auto',
@@ -215,84 +193,85 @@ const Page = ({ pinnedColor }) => {
             borderColor={colorB}
             onClick={skip}
             title='Press the right arrow key to generate a new color combo'
+            sx={{fontWeight:"bold"}}
           >
-            New colors
+            Generate
             <ArrowRightCircle size={20} />
           </Button>
         </div>
       </header>
       <section sx={{
-         mx: 'auto',
-         bg: 'transparent',
-           //boxShadow: 'inset 0 0 0 1px currentColor',
-           maxWidth: '64rem',
-    }}>
-         <div sx={{ 
-           display: 'flex',
-           alignItems: 'center',
-           flexWrap: ['wrap','nowrap'],
-           gap: '8px', 
-           filter: 'saturate(100%)',
-           transition: 'filter .25s ease',
-           ':hover': {
-             filter: 'saturate(100%)'
-           },
-           ':hover': {
-             filter: 'saturate(100%)'
-           },
-           px: 4,
-           height: '64px',
-           mx: 'auto',
-           overflow:'hidden',
-           justifyContent: 'center',
-         }}>
-            <div sx={{ '> a': {
-             // boxShadow: '0 0 2px 4px rgba(0,0,0,.125)'
-            }}}><ColorLink color='#ffffff' /></div>
-            <ColorLink color='#000000' />
-            <ColorLink color='#0000ff' />
-            <ColorLink color='#1e90ff' />
-            <ColorLink color='#87ceeb' />
-            <ColorLink color='#4b0082' />
-            <ColorLink color='#8a2be2' />
-            <ColorLink color='#ff00ff' />
-            <ColorLink color='#ee82ee' />
-            <ColorLink color='#ff69b4' />
-            <ColorLink color='#ff0000' />
-            <ColorLink color='#ff4500' />
-            <ColorLink color='#ffa500' />
-            <ColorLink color='#ffd700' />
-            <ColorLink color='#ffff00' />
-            <ColorLink color='#00ff7f' />
-            <ColorLink color='#008080' />
-            <ColorLink color='#00ffff' />
-            <ColorLink color='' children='Clear' />
-         </div>
+        mx: 'auto',
+        bg: 'transparent',
+        maxWidth: '64rem',
+      }}>
+        <div sx={{
+          display: 'flex',
+          alignItems: 'center',
+          flexWrap: ['wrap', 'nowrap'],
+          gap: '8px',
+          filter: 'saturate(100%)',
+          transition: 'filter .25s ease',
+          ':hover': {
+            filter: 'saturate(100%)'
+          },
+          ':hover': {
+            filter: 'saturate(100%)'
+          },
+          px: 4,
+          height: '64px',
+          mx: 'auto',
+          overflow: 'hidden',
+          justifyContent: 'center',
+        }}>
+          <div sx={{
+            '> a': {
+              // boxShadow: '0 0 2px 4px rgba(0,0,0,.125)'
+            }
+          }}><ColorLink color='#ffffff' /></div>
+          <ColorLink color='#000000' />
+          <ColorLink color='#0000ff' />
+          <ColorLink color='#1e90ff' />
+          <ColorLink color='#87ceeb' />
+          <ColorLink color='#4b0082' />
+          <ColorLink color='#8a2be2' />
+          <ColorLink color='#ff00ff' />
+          <ColorLink color='#ee82ee' />
+          <ColorLink color='#ff69b4' />
+          <ColorLink color='#ff0000' />
+          <ColorLink color='#ff4500' />
+          <ColorLink color='#ffa500' />
+          <ColorLink color='#ffd700' />
+          <ColorLink color='#ffff00' />
+          <ColorLink color='#00ff7f' />
+          <ColorLink color='#008080' />
+          <ColorLink color='#00ffff' />
+          <ColorLink color='' children='Clear' />
+        </div>
       </section>
 
       <ContrastBoxes colorPair={colorPair} />
-<div sx={{ textAlign: 'center', pt: 5, }}>
-          <a
-            sx={{ 
-              display: 'inline-flex',
-              mx: 'auto',
-              color: colorPair[0], fontWeight: "bold", textDecoration: 'none', 
-                gap: '8px',
-                transition: 'all .25s ease',
-                ':hover': {
-                  filter: 'hue-rotate(140deg)',
-                  opacity: .8,
+      <div sx={{ textAlign: 'center', pt: 5, }}>
+        <a
+          sx={{
+            display: 'inline-flex',
+            mx: 'auto',
+            color: colorPair[0], fontWeight: "bold", textDecoration: 'none',
+            gap: '8px',
+            transition: 'all .25s ease',
+            ':hover': {
+              filter: 'hue-rotate(140deg)',
+              opacity: .8,
 
-                }
+            }
 
-            }}
-            href="https://components.ai/u/system/cl97otyus041709lblou2lylf/cl97ou8xs068609l3he0g8kau"
-          >
-            <Sliders size={20} strokeWidth={2} /> Advanced Editor
-          </a>
-          <p style={{ textAlign: 'center', fontSize: '10px' }}>{count} generated combinations</p>
-     </div>
-    
+          }}
+          href="https://github.com/Alaalawara/Randomcolorr"
+        >
+          <Anchor size={20} strokeWidth={2} /> ease family
+        </a>
+      </div>
+
     </Layout>
   )
 }
@@ -300,7 +279,7 @@ const Page = ({ pinnedColor }) => {
 export async function getServerSideProps(context) {
   return {
     props: {
-      pinnedColor: context.query.color? decodeURI(context.query.color) : null,
+      pinnedColor: context.query.color ? decodeURI(context.query.color) : null,
     },
   }
 }
