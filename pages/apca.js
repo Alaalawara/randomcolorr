@@ -183,7 +183,7 @@ const Page = ({ pinnedColor }) => {
               borderRadius: '9999px',
             }}
           ></span>
-          <span sx={{ fontSize: '10px', display: ['none', 'block', 'block'] }}>Randoma11y</span>
+          <span sx={{ fontSize: '10px', display: ['none', 'block', 'block'] }}>Randomcolorr</span>
         </a>
     </Link>
       <Link href={{
