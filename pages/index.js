@@ -1,10 +1,10 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { IconButton, jsx } from 'theme-ui'
+import {jsx } from 'theme-ui'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import contrast from 'get-contrast'
-import { Shuffle, Sliders, Heart, ArrowRightCircle, ArrowUpCircle, ArrowDownCircle, RotateCcw, Eye, EyeOff, Anchor } from 'react-feather'
+import {ArrowRightCircle, Eye, EyeOff, Anchor } from 'react-feather'
 
 import Layout from '../components/layout'
 import Button from '../components/button'
