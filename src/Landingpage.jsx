@@ -4,6 +4,11 @@ import { Separator } from "./components/ui/separator";
 import { useEffect, useState } from "react";
 import { generatePalette } from "../utils/generatePalette";
 import { HyperText } from "./components/magicui/hyper-text";
+import { Github } from "lucide-react";
+import { CodeXml } from "lucide-react";
+import { Palette } from "lucide-react";
+import { SwatchBook } from "lucide-react";
+import { ArrowDownRight } from "lucide-react";
 
 export default function LandingPage() {
     const [primaryColor, setPrimaryColor] = useState("#000000");
@@ -47,14 +52,14 @@ export default function LandingPage() {
             {/* Header */}
             <header className="w-full relative">
                 <div className="flex items-center justify-between px-6 py-4">
-                    <span className="text-xl font-medium px-2 py-2 border" onClick={handleInvert} style={{ color: secondaryColor, borderColor: secondaryColor, cursor: "pointer" }}>
-                        ☯ Randomcolorr
+                    <span className="text-xl font-medium px-2 py-2 border" onClick={handleInvert} style={{ color: secondaryColor, borderColor: secondaryColor, cursor: "pointer", display: "flex", flexDirection: "row" }}>
+                        <Palette color:secondaryColor strokeWidth={3} /> Randomcolorr
                     </span>
                     <button
                         onClick={handleGenerate}
                         className="border px-3 py-2 font-bold"
-                        style={{ backgroundColor: secondaryColor, color: primaryColor, cursor: "pointer", borderColor: secondaryColor }}
-                    > GENERATE 🡺
+                        style={{ backgroundColor: secondaryColor, color: primaryColor, cursor: "pointer", borderColor: secondaryColor,display:"flex",flexDirection:"row" }}
+                    > GENERATE <SwatchBook/>
                     </button>
                 </div>
                 <Separator style={{ backgroundColor: secondaryColor, height: 2 }} />
@@ -104,7 +109,7 @@ export default function LandingPage() {
                 {/* About Us Section */}
                 <section className="mt-10 px-4 md:px-10">
                     <div className="inline-flex items-center justify-center p-2.5 border" style={{ borderColor: secondaryColor }}>
-                        <h2 className="text-3xl md:text-5xl font-medium uppercase">🢆About Us</h2>
+                        <ArrowDownRight size={64}/><h2 className="text-3xl md:text-5xl font-medium uppercase">About Us</h2>
                     </div>
 
                     <div className="flex flex-col gap-4 mt-6">
@@ -132,29 +137,32 @@ export default function LandingPage() {
             <footer className="w-full mt-10">
                 <Separator style={{ backgroundColor: secondaryColor, height: 2 }} />
                 <div className="flex flex-col md:flex-row items-center justify-between px-6 py-6 gap-4">
-                    <span className="text-xl font-medium px-2 py-2 border" onClick={handleInvert} style={{ color: secondaryColor, borderColor: secondaryColor, cursor: "pointer" }}>
-                        ☯ Randomcolorr
+                    <span className="text-xl font-medium px-2 py-2 border" onClick={handleInvert} style={{ color: secondaryColor, borderColor: secondaryColor, cursor: "pointer", display: "flex", flexDirection: "row" }}>
+                        <Palette color:secondaryColor strokeWidth={3} /> Randomcolorr
                     </span>
                     <div className="flex gap-3">
                         <a href="https://swarajdev.vercel.app/" target="_blank" rel="noopener noreferrer">
                             <button
                                 className="border px-3 py-2 font-bold"
-                                style={{ backgroundColor: secondaryColor, color: primaryColor, cursor: "pointer", borderColor: secondaryColor }}
-                            >🢅SWARAJ.DEV
+                                style={{ backgroundColor: secondaryColor, color: primaryColor, cursor: "pointer", borderColor: secondaryColor, display: "flex", flexDirection: "row" }}
+                            ><CodeXml color:primaryColor /> SWARAJ.DEV
                             </button>
                         </a>
                         <a href="https://github.com/Alaalawara" target="_blank" rel="noopener noreferrer">
                             <button
                                 className="border px-3 py-2 font-bold"
-                                style={{ backgroundColor: secondaryColor, color: primaryColor, cursor: "pointer", borderColor: secondaryColor }}
-                            >🢅GITHUB
+                                style={{ backgroundColor: secondaryColor, color: primaryColor, cursor: "pointer", borderColor: secondaryColor, display: "flex", flexDirection: "row" }}
+                            ><div className="app">
+                                    <Github color:primaryColor />
+                                </div>
+                                GITHUB
                             </button>
                         </a>
                         <a href="https://x.com/loops_infinity" target="_blank" rel="noopener noreferrer">
                             <button
                                 className="border px-3 py-2 font-bold"
-                                style={{ backgroundColor: secondaryColor, color: primaryColor, cursor: "pointer", borderColor: secondaryColor }}
-                            >🢅X
+                                style={{ backgroundColor: secondaryColor, color: primaryColor, cursor: "pointer", borderColor: secondaryColor, display: "flex", flexDirection: "row" }}
+                            >X
                             </button>
                         </a>
                     </div>
