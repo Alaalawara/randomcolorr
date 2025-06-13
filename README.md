@@ -1,4 +1,4 @@
-![image_alt](https://github.com/Alaalawara/randomcolorr/blob/6727c02f25982de4c8e58f7197b3324737abd98e/src/assets/logo.png)
+![image_alt](https://github.com/Alaalawara/randomcolorr/blob/1c2f6b6f5809c7db1c17cdd81da89d6f8d69e58a/src/assets/palette.png)
 
 <h1 align="center">Hi 👋, I'm Swaraj</h1>
 <h3 align="center">A passionate Full stack developer from India</h3>
