@@ -1,7 +1,9 @@
+![image_alt](https://github.com/Alaalawara/randomcolorr/blob/6727c02f25982de4c8e58f7197b3324737abd98e/src/assets/logo.png)
+
 <h1 align="center">Hi 👋, I'm Swaraj</h1>
 <h3 align="center">A passionate Full stack developer from India</h3>
 
-- 🔭 I’m currently working on [Randomcolorr](https://alaalawara.github.io/randomcolorr/)
+- 🔭 I’m currently working on [Randomcolorr](https://randomcolorr.vercel.app/)
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
@@ -13,4 +15,4 @@
 About:
 Randomcolorr - Generate color combinations
 
-Live Demo: https://alaalawara.github.io/randomcolorr/
+Live Demo: https://randomcolorr.vercel.app/
