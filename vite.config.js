@@ -7,5 +7,6 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
     react()],
-    base:"/randomcolorr",
+    // base:"/randomcolorr",
+    base: process.env.VITE_BASE_PATH || "/randomcolorr",
 })
